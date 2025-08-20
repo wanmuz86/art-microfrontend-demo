@@ -13,5 +13,6 @@ interface MicroAppProps {
     // the props that was passed previously from the host app
     initialData? :{
         message:string
-    }
+    },
+    onDataReceived?: (data:string)=> void
 }

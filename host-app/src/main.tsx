@@ -18,6 +18,10 @@ const initialData = {
 }
 
 
+const handleDataFromMicroApp = (data:string) => {
+console.log("Data received from micro app:", data);
+}
+
 // Registration process
 // setting up host application to register micro frontend
 registerMicroApps([
@@ -31,6 +35,7 @@ registerMicroApps([
     activeRule:"/app",
     props: {
       initialData, // passing data to micro app
+      onDataReceived:handleDataFromMicroApp // callback to receive data from micro app
     }
   }
 ])
