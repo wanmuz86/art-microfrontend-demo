@@ -3,8 +3,25 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
 
+import { registerMicroApps, start } from 'qiankun'
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <App />
   </StrictMode>,
 )
+
+// Registration process
+// setting up host application to register micro frontend
+registerMicroApps([
+  {
+    name:"micro-app", 
+    entry:"//localhost:4173/micro-app/",  // later will deploy the microfrontend to port 4173
+    // where do i render the micro frontend? 
+    // We will add a div with id micro-app-container to host the microfront-end
+    container:"#micro-app-container", 
+    // the url to open the microfrontend
+    activeRule:"/app"
+  }
+])
+start()
