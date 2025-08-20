@@ -1,12 +1,18 @@
+import { useNavigate } from 'react-router-dom'
 import './App.css'
 
 function App() {
   
+const navigate = useNavigate();
+
+const navigateToMicroApp = () => {
+  navigate('/app/detail');
+};
 
   return (
     <>
     <h1>Host Application</h1>
-      <div id="micro-app-container"></div>
+      <button onClick={navigateToMicroApp}>Go to Detail Page in Micro App</button>
     </>
   )
 }

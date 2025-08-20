@@ -1,8 +1,9 @@
+import { RouterProvider } from "react-router-dom";
+import router from "./routes";
+
 function App() {
   return (
-    <div className="App">
-      <h2>This is the Micro App</h2>
-    </div>
+    <RouterProvider router={router} />
   );
 }
 export default App;
