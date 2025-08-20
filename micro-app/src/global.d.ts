@@ -8,3 +8,10 @@ interface Window {
    unmount: () => Promise<void>;
  };
 }
+// Declare the prop type here so that we can use it globally
+interface MicroAppProps {
+    // the props that was passed previously from the host app
+    initialData? :{
+        message:string
+    }
+}

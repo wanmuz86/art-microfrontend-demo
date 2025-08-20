@@ -12,6 +12,11 @@ createRoot(document.getElementById('root')!).render(
   <RouterProvider router={router} /   >
   </StrictMode>,
 )
+// Host application will pass down data
+const initialData = {
+  message:"Hello from the host app!"
+}
+
 
 // Registration process
 // setting up host application to register micro frontend
@@ -23,7 +28,10 @@ registerMicroApps([
     // We will add a div with id micro-app-container to host the microfront-end
     container:"#micro-app-container", 
     // the url to open the microfrontend
-    activeRule:"/app"
+    activeRule:"/app",
+    props: {
+      initialData, // passing data to micro app
+    }
   }
 ])
 start()

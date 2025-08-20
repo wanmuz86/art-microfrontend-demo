@@ -4,12 +4,20 @@ import './index.css'
 import App from './App.tsx'
 import type { Root } from 'react-dom/client'
 
+// Declare the prop type here so that we can use it globally
+interface MicroAppProps {
+    // the props that was passed previously from the host app
+    initialData? :{
+        message:string
+    }
+}
 
 let root: Root | null = null;
-function renderApp(){
+// if it is not specified, it is empty object
+function renderApp(props:MicroAppProps = {}){
   const rootElement = document.getElementById('root')!;
   root = createRoot(rootElement);
-  root.render(<App/>);
+  root.render(<App {...props} />);
 }
 
 // These methods will be called if i am on microapplication
@@ -22,10 +30,11 @@ export async function bootstrap() {
 }
 
 // 2) mount
-export async function mount(props:any) {
+// We receive the host app from mount method
+export async function mount(props:MicroAppProps) {
   // Your mount logic here
   console.log('Application mounted with props:', props);
-  renderApp();
+  renderApp(props);
 }
 
 export async function unmount() {
